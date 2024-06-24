@@ -1,0 +1,5 @@
+module.exports = () => (Math.random() * 1)
+.toString(32)
+.replace(".", "")
+.toLocaleUpperCase()
+.slice(0, 6) 

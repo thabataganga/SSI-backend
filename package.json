@@ -1,0 +1,57 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Repositório referente ao Backend do IDOOK",
+  "main": "server.js",
+  "scripts": {
+    "deploy": "pm2 start server.js --name=deploy_backend",
+    "dev": "rm -rf .env && cat .env.dev >> .env && nodemon server.js",
+    "dev:clearDb": "rm -rf .env && cat .env.dev >> .env && node ./script/mongoose.js",
+    "local": "rm -rf .env && cat .env.local >> .env && nodemon server.js",
+    "local:clearDb": "rm -rf .env && cat .env.local >> .env && node ./script/mongoose.js",
+    "doc": "rm -rf .env && cat .env.doc >> .env && node ./swagger.js",
+    "rsa:generator": "openssl genrsa -out private.pem && openssl rsa -in private.pem -pubout -out public.pem",
+    "test": "rm -rf .env && cat .env.test >> .env && npx jest --colors --detectOpenHandles --config=jest.config.js",
+    "test:integration": "rm -rf .env && cat .env.test >> .env && npx jest --detectOpenHandles --colors --config=jest.config-integration.js",
+    "test:unit": "rm -rf .env && cat .env.test >> .env && npx jest --colors --config=jest.config-unit.js",
+    "test:full": "rm -rf .env && cat .env.test >> .env && npx jest --detectOpenHandles --colors; eslint . --fix --ext .js ; npm audit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "SC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "bcrypt": "^5.1.0",
+    "chalk": "^4.1.2",
+    "cors": "^2.8.5",
+    "cpf-cnpj-validator": "^1.0.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "helmet": "^5.0.2",
+    "iconv-lite": "^0.6.3",
+    "jest": "^27.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.0",
+    "morgan": "^1.10.0",
+    "node-cache": "^5.1.2",
+    "node-schedule": "^2.1.0",
+    "nodemailer": "^6.7.2",
+    "qrcode": "^1.5.3",
+    "qrcode-terminal": "^0.12.0",
+    "redis": "^4.0.4",
+    "swagger-autogen": "^2.19.0",
+    "swagger-ui-express": "^4.3.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ekoar-Idook/idook-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ekoar-Idook/idook-backend/issues"
+  },
+  "homepage": "https://github.com/Ekoar-Idook/idook-backend#readme"
+}

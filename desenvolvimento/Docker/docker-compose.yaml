@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo_database
+    ports:
+      - "27017:27017"
+
+  sindpd:
+    build:
+      context: ./sindpd
+      dockerfile: Dockerfile
+    container_name: sindpd
+    ports:
+      - "8081:8081"
